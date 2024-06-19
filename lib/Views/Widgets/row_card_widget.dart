@@ -10,8 +10,8 @@ class RowCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       
-      height: 40,
-      width: 55,
+      height: MediaQuery.of(context).size.height*.04,
+      width: MediaQuery.of(context).size.width*.11,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(19),
         color: color

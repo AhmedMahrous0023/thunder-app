@@ -35,7 +35,7 @@ class MyTileCard extends StatelessWidget {
                   ),
                   MyCustomText(
                     text: name!,
-                    fontSize: 19,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                   const SizedBox(
@@ -49,7 +49,7 @@ class MyTileCard extends StatelessWidget {
                       child: MyCustomText(
                         text: buttonName,
                         fontWeight: FontWeight.bold,
-                        fontSize: 17,
+                        fontSize: 15,
                       )),
                   const SizedBox(
                     width: 20,
@@ -64,7 +64,7 @@ class MyTileCard extends StatelessWidget {
                   ),
                   MyCustomText(
                     text: price!,
-                    fontSize: 19,
+                    fontSize: 16,
                     fontWeight: FontWeight.w800,
                     color: Colors.grey,
                   ),
@@ -73,7 +73,7 @@ class MyTileCard extends StatelessWidget {
                   ),
                   MyCustomText(
                     text: percentage!,
-                    fontSize: 19,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600,
                     color: color,
                   ),

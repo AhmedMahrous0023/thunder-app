@@ -9,7 +9,13 @@ class MarketItemDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SafeArea(child: ItemDetailsWidget(imageName: imageName, firstText:itemName , itemName: itemName, itemPrice: itemPrice,  today: 'Today',percentage: percentage,)),
+      body: SafeArea(child: SingleChildScrollView(
+        child: Column(
+          children: [
+            ItemDetailsWidget(imageName: imageName, firstText:itemName , itemName: itemName, itemPrice: itemPrice,  today: 'Today',percentage: percentage,),
+          ],
+        ),
+      )),
     );
   }
 }

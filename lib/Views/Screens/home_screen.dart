@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thunder_app/DataBase/Offline%20DB/markets_data.dart';
 import 'package:thunder_app/Models/market_model.dart';
+import 'package:thunder_app/Views/Screens/gold_details_screen.dart';
 import 'package:thunder_app/Views/Screens/market_tem_details.dart';
 import 'package:thunder_app/Views/Screens/markets_screen.dart';
 import 'package:thunder_app/Views/Widgets/my_custom_card.dart';
@@ -24,40 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 15),
-                  child: MyCustomText(
-                    text: 'Markets',
-                    fontSize: 31,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 150),
-                  child: GestureDetector(
-                    onTap: () async {
-                      final updatedMarkets = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                MarketsScreen(visibleMarkets: visibleMarkets)),
-                      );
-                      if (updatedMarkets != null) {
-                        setState(() {
-                          visibleMarkets = updatedMarkets;
-                        });
-                      }
-                    },
-                    child: const MyCustomText(
-                      text: 'View all',
-                      fontSize: 25,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ),
-              ],
+            const MyCustomText(
+              text: 'Markets',
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
             ),
             Expanded(
               child: GridView.builder(
@@ -68,26 +39,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemCount: visibleMarkets.length,
                 itemBuilder: (context, index) {
                   final market = visibleMarkets[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => MarketItemDetails(
-                              itemName: market.name!,
-                              itemPrice: market.price!,
-                              imageName: market.image!,
-                              percentage: market.percentage!,
-                            ),
-                          ),
-                        );
-                      },
-                      child: MyCustomCard(
-                        price: market.price!,
-                        name: market.name!,
-                        percentage: market.percentage!,
+                  return Visibility(
+                    visible: !market.isHide,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          if (market.name == 'EGX 30') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MarketItemDetails(
+                                  itemName: market.name!,
+                                  itemPrice: market.price!,
+                                  imageName: market.image!,
+                                  percentage: market.percentage!,
+                                ),
+                              ),
+                            );
+                          }  if(market.name=='24K Gold') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GoldDetailsScreen(
+                                      itemName: market.name!,
+                                      itemPrice: market.price!,
+                                      imageName: market.image!,
+                                      percentage: market.percentage!,
+                                      descibtionImage: market.describtionImage!)),
+                            );
+                          }
+                        },
+                        child: MyCustomCard(
+                          price: market.price!,
+                          name: market.name!,
+                          percentage: market.percentage!,
+                        ),
                       ),
                     ),
                   );

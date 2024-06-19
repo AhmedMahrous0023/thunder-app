@@ -9,9 +9,10 @@ class BottomNavigationBarPage extends StatefulWidget {
 }
 
 class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
-  int _selectedIndex = 0; final List<Widget> _screens = [
-    const HomeScreen(),
+  int _selectedIndex = 2; final List<Widget> _screens = [
+       const  Center(child: Text('Home Screen')),
    const  Center(child: Text('Portfolio Screen')),
+   const HomeScreen(),
    const  Center(child: Text('Feed Screen')),
    const  Center(child: Text('Profile Screen')),
   ];
