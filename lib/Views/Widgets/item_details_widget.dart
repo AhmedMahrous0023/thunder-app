@@ -142,13 +142,8 @@ class ItemDetailsWidget extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          SizedBox(
-                            width: 7,
-                          ),
-                          Icon(
-                            Icons.favorite_outline,
-                            size: 30,
-                          ),
+                         
+                        
                           SizedBox(
                             width: 7,
                           ),
